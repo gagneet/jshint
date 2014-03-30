@@ -933,7 +933,7 @@ Lexer.prototype = {
 
     this.skip();
 
-    while (this.peek() !== quote) {
+    outer: while (this.peek() !== quote) {
       while (this.peek() === "") { // End Of Line
 
         // If an EOL is not preceded by a backslash, show a warning
@@ -985,6 +985,9 @@ Lexer.prototype = {
             quote: quote
           };
         }
+        
+        if (this.peek() == quote)
+          break outer;
       }
 
       allowNewLine = false;
