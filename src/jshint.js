@@ -593,7 +593,7 @@ var JSHINT = (function () {
 
   function doOption() {
     var nt = state.tokens.next;
-    var body = nt.body.split(",").map(function (s) { return s.trim(); });
+    var body = nt.body.match(/(-\s+)?[^\s,:]+(?:\s*:\s*(-\s+)?[^\s,]+)?/g);
     var predef = {};
 
     if (nt.type === "globals") {
